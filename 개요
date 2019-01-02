@@ -1,0 +1,40 @@
+[쇼핑몰 개요]
+
+** 관리자 페이지
+ .카테고리 등록
+ .카테고리 리스트
+ .카테고리 삭제
+ .카테고리 관련 상품 등록
+ .등록된 상품 리스트
+ .상품 정보 수정
+ .상품 정보 삭제
+ 
+ >> admin 로그인을 통해서 권한 획득
+	CREATE TABLE admin(
+		id VARCHAR2(10) NOT NULL,
+		password VARCHAR2(10) NOT NULL,
+		name VARCHAR2(20) NOT NULL,
+		email VARCHAR2(30) NOT NULL
+	);
+	//관리자 추가
+	INSERT INTO admin VALUES('admin', 'admin1234','관리자','admin@naver.com');
+  	
+  >>카테고리 관련 DB테이블
+ 카테고리 번호(cateNum): primary key, sequence명 지정 cate_seq
+ 코드
+ 카테고리명
+CREATE TABLE category(
+	cateNum number(5) NOT NULL PRIMARY KEY,
+	code VARCHAR2(10) NOT NULL,
+	cateName VARCHAR2(20) NOT NULL
+);
+ 
+ >>상품 관련 DB 테이블
+ 상품번호 (prodNum), sequence지정(prod_seq)
+ 상품명
+ 상품카테고리
+ 상품회사
+ 상품이미지
+ 상품수량
+ 상품가격
+ 상품사양
