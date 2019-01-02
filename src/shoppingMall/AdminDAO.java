@@ -61,7 +61,7 @@ public class AdminDAO {
 				dbPw = rs.getString("password");
 //				System.out.println("dbpw:" + dbPw);
 //				System.out.println("pwd:" + pwd);
-				if(dbPw.equals("pwd")) { //compare real password and user input
+				if(dbPw.equals(pwd)) { //compare real password and user input
 					n = AdminDAO.ADMIN_LOGIN_SUCCESS; 
 				} else {
 					n = AdminDAO.ADMIN_LOGIN_PW_FAIL; // Wrong password
