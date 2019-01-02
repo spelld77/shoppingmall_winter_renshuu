@@ -17,7 +17,7 @@
 		email VARCHAR2(30) NOT NULL
 	);
 	//관리자 추가
-	INSERT INTO admin VALUES('admin', 'admin1234','관리자','admin@naver.com');
+	INSERT INTO admin VALUES('admin', 'admin1234','관리자','admin@naver.com')
   	
   >>카테고리 관련 DB테이블
  카테고리 번호(cateNum): primary key, sequence명 지정 cate_seq
