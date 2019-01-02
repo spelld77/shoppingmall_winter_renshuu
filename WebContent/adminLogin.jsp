@@ -17,7 +17,7 @@
 	<hr width="500" color="green">
 	<form action="loginOk.jsp" method="post">
 		아이디 : <input type="text" name="id" value="<%if(session.getAttribute("id") != null) out.println(session.getAttribute("id"));%>"><br>
-		비밀번호: <input type="password" name="password"><br>
+		비밀번호: <input type="password" name="pw"><br>
 		<input type="submit" value="로그인">
 	</form>
 </body>

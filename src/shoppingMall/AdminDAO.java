@@ -49,7 +49,7 @@ public class AdminDAO {
 		Connection dbconn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
-		String sql = "SELECT pw from admin WHERE id = ?";
+		String sql = "SELECT password from admin WHERE id = ?";
 		
 		try {
 			dbconn = getConnection();
@@ -58,7 +58,9 @@ public class AdminDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dbPw = rs.getString("pw");
+				dbPw = rs.getString("password");
+//				System.out.println("dbpw:" + dbPw);
+//				System.out.println("pwd:" + pwd);
 				if(dbPw.equals("pwd")) { //compare real password and user input
 					n = AdminDAO.ADMIN_LOGIN_SUCCESS; 
 				} else {
@@ -95,9 +97,9 @@ public class AdminDAO {
 			pstmt = dbconn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			System.out.println("before rs.next");
+//			System.out.println("before rs.next");
 			if(rs.next()) {
-				System.out.println("in next");
+//				System.out.println("in next");
 				adto = new AdminDTO();
 				adto.setId(rs.getString("id"));
 				adto.setPw(rs.getString("password"));
