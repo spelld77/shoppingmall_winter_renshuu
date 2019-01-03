@@ -3,10 +3,9 @@
 <%@ include file="../ad_top.jsp" %>
 <script>
 	function inputCheck(){
-		if(cat_inputFrm.code.value){
+		if(!cat_inputFrm.code.value){
 			alert("카테고리를 입력하세요");
 			cat_inputFrm.code.focus();
-			return;
 		}
 		if(!cat_inputFrm.cname.value){
 			alert("카테고리 이름을 입력하세요")

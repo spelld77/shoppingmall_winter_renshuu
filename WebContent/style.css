@@ -27,3 +27,15 @@ a:hover{
 	font-family: verdana;
 }
 
+.outLine{
+	border-top:3px double navy; border-bottom:3px double navy;
+}
+
+.m1{
+	background-color:#eeffee;
+	border-bottom:1px dotted #99eecc;
+}
+
+.m2{
+	background-color:#bbee00;
+}

@@ -24,10 +24,16 @@
  코드
  카테고리명
 CREATE TABLE category(
-	cateNum number(5) NOT NULL PRIMARY KEY,
+	cNum number(5) NOT NULL PRIMARY KEY,
 	code VARCHAR2(10) NOT NULL,
-	cateName VARCHAR2(20) NOT NULL
+	cName VARCHAR2(20) NOT NULL
 );
+ >> 카테고리 시퀀스
+ CREATE SEQUENCE category_seq
+	INCREMENT BY 1
+	START WITH 1
+	NOCACHE
+;
  
  >>상품 관련 DB 테이블
  상품번호 (prodNum), sequence지정(prod_seq)
