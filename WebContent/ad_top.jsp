@@ -15,7 +15,7 @@
 	<table style="margin:auto;width:800px;">
 		<tr>
 			<td>
-				<a href="#">관리자 홈</a>
+				<a href="<%=request.getContextPath()%>/ad_main.jsp">관리자 홈</a>
 			</td>
 			<td>
 				<a href="#">쇼핑몰 홈</a>
@@ -27,7 +27,7 @@
 				<a href="<%=request.getContextPath()%>/admin/catList.jsp">카테고리 목록</a>
 			</td>
 			<td>
-				<a href="#">상품 등록</a>
+				<a href="<%=request.getContextPath()%>/admin/prod_input.jsp">상품 등록</a>
 			</td>
 			<td>
 				<a href="#">상품 리스트</a>
