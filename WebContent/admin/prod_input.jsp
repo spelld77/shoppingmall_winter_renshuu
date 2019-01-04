@@ -9,12 +9,12 @@
 	
 %>
 <h3>상품 등록 페이지</h3>
-<form action="prod_regOk.jsp" method="post" name="prodFrm" >
-	<table style="margin:auto;" border="0" class="outLine">
+<form action="prod_regOk.jsp" method="post" name="prodFrm" enctype="multipart/form-data">
+	<table style="margin:auto;" width="600" border="0" class="outLine" >
 		<tr>
 			<th class="m3">카테고리</th>
 			<td align="left">
-				<select name="pcategory">
+				<select name="pcategory_fk">
 				<%
 					ArrayList<CategoryDTO> cdtos = cdao.categoryAll();
 					if(cdtos == null || cdtos.size() ==0){

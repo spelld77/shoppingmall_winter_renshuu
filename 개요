@@ -44,3 +44,23 @@ CREATE TABLE category(
  상품수량
  상품가격
  상품사양
+ 
+--상품 시퀀스
+CREATE SEQUENCE product_seq
+INCREMENT BY 1
+START WITH 1
+NOCACHE;
+--상품 테이블
+ CREATE TABLE product2(
+	pnum number(8) PRIMARY KEY,
+	pname VARCHAR2(50) NOT NULL,
+	pcategory_fk VARCHAR2(20) NOT NULL,
+	pcompany VARCHAR2(50),
+	pimage VARCHAR2(30),
+	pqty NUMBER(8) DEFAULT 0,
+	price NUMBER(8) DEFAULT 0,
+	pspec VARCHAR2(12),
+	pcontents VARCHAR2(300),
+	point NUMBER(8) DEFAULT 0,
+	pinputdate DATE
+);

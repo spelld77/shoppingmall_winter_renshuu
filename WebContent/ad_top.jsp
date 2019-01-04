@@ -30,7 +30,7 @@
 				<a href="<%=request.getContextPath()%>/admin/prod_input.jsp">상품 등록</a>
 			</td>
 			<td>
-				<a href="#">상품 리스트</a>
+				<a href="<%=request.getContextPath()%>/admin/prodList.jsp">상품 리스트</a>
 			</td>
 		</tr>
 	</table>
