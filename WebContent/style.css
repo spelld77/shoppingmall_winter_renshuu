@@ -44,3 +44,9 @@ a:hover{
 	background-color:#ffcc00;
 	border-bottom:1px dotted #9933aa;
 }
+table{
+	margin:auto;
+}
+td{
+	text-align:left;
+}

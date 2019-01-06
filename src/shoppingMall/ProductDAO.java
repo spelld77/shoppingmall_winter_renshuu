@@ -63,6 +63,30 @@ public class ProductDAO {
 		}
 	}//registerProduct
 	
+	//상품번호로 특정 상품 정보 가져오기
+	public ProductDTO selectProduct(String pnum) throws SQLException{
+		Connection dbconn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM product2 WHERE pnum = ?";
+		try {
+			dbconn = getConnection();
+			pstmt = dbconn.prepareStatement(sql);
+			pstmt.setString(1, pnum);
+			rs = pstmt.executeQuery();
+			ArrayList<ProductDTO> pdtos = this.makeArrayList(rs);
+			ProductDTO pdto = null;
+			if(pdtos != null && pdtos.size() != 0) {
+				pdto = pdtos.get(0);
+			}
+			return pdto;
+		} finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(dbconn != null) dbconn.close();
+		}
+	}//selectProduct
+	
 	//모든 상품리스트를 가져온다
 	public ArrayList<ProductDTO> productAll() throws SQLException{
 		Connection dbconn = null;
