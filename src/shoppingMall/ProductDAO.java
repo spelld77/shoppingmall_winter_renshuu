@@ -177,6 +177,22 @@ public class ProductDAO {
 		
 	}//updateProd
 	
+	public int delProd(String pnum) throws SQLException {
+		Connection dbconn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM product2 WHERE pnum = ?";
+		
+		try {
+			dbconn = getConnection();
+			pstmt = dbconn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(pnum));
+			return pstmt.executeUpdate();
+		} finally {
+			if(pstmt != null) pstmt.close();
+			if(dbconn != null) dbconn.close();
+		}
+	}//delProd
+	
 	//Connection Pool에서 커넥션 얻기
 	private Connection getConnection() {
 		Context ctx = null;

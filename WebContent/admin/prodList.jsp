@@ -5,6 +5,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../ad_top.jsp" %>
 
+<script>
+	//삭제할지 묻는다
+	function checkDel(pnum, pimage){
+		var isDel = window.confirm("삭제 하시겠습니까?");
+		if(isDel) location.href = "prodDelete.jsp?pnum=" + pnum +"&pimage=" + pimage;
+	}
+</script>
+
 <br><br>
 <hr width="500" color="red">
 <h3>상품 리스트</h3>
@@ -53,7 +61,7 @@
 		<td><%=pdto.getPqty() %></td>
 		<td>
 			<a href="prodUpdate.jsp?pnum=<%=pdto.getPnum()%>">수정</a>
-			<a href="prodDelete.jsp?pnum=<%=pdto.getPnum()%>">삭제</a>
+			<a href="javascript:checkDel('<%=pdto.getPnum()%>','<%=pdto.getPimage()%>')">삭제</a>
 		</td>
 	</tr>
 <%
