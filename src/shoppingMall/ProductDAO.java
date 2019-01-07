@@ -128,6 +128,55 @@ public class ProductDAO {
 		return pdtos;
 	} //makeArrayList
 	
+	//상품 정보를 수정하는 로직
+	public int updateProd(MultipartRequest multi) throws SQLException{
+		Connection dbconn = null;
+		PreparedStatement pstmt = null;
+		
+		String pname = multi.getParameter("pname");
+		String pcategory_fk = multi.getParameter("pcategory_fk");
+		String pcompany = multi.getParameter("pcompany");
+		String pimageNew = multi.getFilesystemName("pimageNew");
+		//pimageNew가 null인 경우는 이미지는 그대로 (수정안했음)
+		if(pimageNew == null) {
+			pimageNew = multi.getFilesystemName("pimageOld");
+		}
+		String pqty = multi.getParameter("pqty");
+		String price = multi.getParameter("price");
+		String pspec = multi.getParameter("pspec");
+		String pcontents = multi.getParameter("pcontents");
+		String point = multi.getParameter("point");
+		String pnum = multi.getParameter("pnum");
+		
+		String sql = "UPDATE product2 SET "
+				+ "pname = ?, pcategory_fk = ?, pcompany = ?,"
+				+ "pimage = ?, pqty = ?, price = ?,"
+				+ "pspec = ?, pcontents =?, point=?,"
+				+ "pinputDate = sysdate "
+				+ "WHERE pnum = ?";
+		
+		try {
+			dbconn = getConnection();
+			pstmt = dbconn.prepareStatement(sql);
+			pstmt.setString(1, pname);
+			pstmt.setString(2, pcategory_fk);
+			pstmt.setString(3, pcompany);
+			pstmt.setString(4, pimageNew);
+			pstmt.setInt(5, Integer.parseInt(pqty));
+			pstmt.setInt(6, Integer.parseInt(price));
+			pstmt.setString(7, pspec);
+			pstmt.setString(8, pcontents);
+			pstmt.setInt(9, Integer.parseInt(point));
+			pstmt.setInt(10, Integer.parseInt(pnum));
+			
+			return pstmt.executeUpdate();
+		} finally {
+			if(pstmt != null) pstmt.close();
+			if(dbconn != null) dbconn.close();
+		}
+		
+	}//updateProd
+	
 	//Connection Pool에서 커넥션 얻기
 	private Connection getConnection() {
 		Context ctx = null;

@@ -15,6 +15,16 @@
 	} //if
 	ProductDAO pdao = ProductDAO.getInstance();
 	ProductDTO pdto = pdao.selectProduct(pnum.trim());
+	
+	if(pdto == null){
+%>
+<script>
+	alert("<%=pnum%>번 상품이 존재하지 않습니다.");
+	history.back(); //location.href="productUpdate.jsp" or historyh.go(-1)
+</script>
+		
+<%
+	}
 %>
 
 <h3>상품 수정 페이지</h3>
@@ -56,6 +66,11 @@
 		<tr> 
 			<th class="m3">상품번호</th>
 			<td><%=pdto.getPnum() %></td>
+			<input type="hidden" name="pnum" value="<%=pdto.getPnum()%>">
+		</tr>
+		<tr>
+			<th class="m3">상품명</th>
+			<td><input type="text" name="pname" value="<%=pdto.getPname()%>"></td>
 		</tr>
 		<tr>
 			<th class="m3">제조회사</th>
@@ -65,9 +80,9 @@
 			<th class="m3">상품이미지</th>
 			<td>
 				<img src="../uploadFile/<%=pdto.getPimage()%>" width="100" height="100">
-				<input type="file" name="pimage">
+				<input type="file" name="pimageNew">
 				<!-- 이미지를 수정하지 않고 그대로 사용할 경우 -->
-				<input type="hidden" name="pimageNew" value="<%=pdto.getPimage()%>">
+				<input type="hidden" name="pimageOld" value="<%=pdto.getPimage()%>">
 			</td>
 		</tr>
 		<tr>
@@ -86,7 +101,7 @@
 		</tr>
 		<tr>
 			<th>상품소개</th>
-			<td><textarea rows="5" cols="50"><%=pdto.getPcontents() %></textarea></td>
+			<td><textarea name="pcontents" rows="5" cols="50"><%=pdto.getPcontents() %></textarea></td>
 		</tr>
 		<tr>
 			<th>상품포인트</th>
