@@ -18,7 +18,7 @@
 				<a href="<%=request.getContextPath()%>/ad_main.jsp">관리자 홈</a>
 			</td>
 			<td>
-				<a href="#">쇼핑몰 홈</a>
+				<a href="<%=request.getContextPath()%>/userPage/main.jsp">쇼핑몰 홈</a>
 			</td>
 			<td>
 				<a href="<%=request.getContextPath()%>/admin/cat_input.jsp">카테고리 등록</a>
