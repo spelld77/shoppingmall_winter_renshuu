@@ -27,7 +27,7 @@
 	%>
 	
 	<br><br>
-	<table width="500" border="0" class="outLine">
+	<table width="540" border="0" class="outLine">
 		<tr class="m1">
 			<td colspan="2">
 				<b>[<%=pdto.getPname() %>]</b> 상품 상세 정보
@@ -37,7 +37,7 @@
 			<td align="center">
 				<img src="../uploadFile/<%=pdto.getPimage()%>" width="200" height="200">
 			</td>
-			<td>
+			<td class="m2">
 				<form name="frm" method="post">
 					상품번호 : <%=pnum %><br>
 					상품이름 : <%=pdto.getPname() %><br>
@@ -50,7 +50,7 @@
 						<tr>
 							<!-- 장바구니 담기 버튼 -->
 							<td>
-								<a href="#">
+								<a href="javascript:goCart('<%=pnum%>')">
 									<img src="../uploadFile/btn_cart(1).gif" border="0">
 								</a>
 							</td>
@@ -67,13 +67,21 @@
 				</form>
 			</td>
 		</tr>
+		<!-- 상품 상세 내용 -->
 		<tr>
 			<td colspan="2" width="250" valign="top">
 				<br>
-				<b>상품소개</b>
+				<b>상품소개</b><br>
 				<%=pdto.getPcontents() %>
 			</td>
 		</tr>
 	</table>
+	<script>
+		function goCart(pnum){
+			document.frm.action = "/shoppingMall/userPage/cartAdd.jsp?pnum=" + pnum;
+			document.frm.submit();
+		}//goCart()
+		
+	</script>
 
 <%@ include file="main_bottom.jsp"%>

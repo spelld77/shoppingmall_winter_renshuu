@@ -66,7 +66,7 @@
 				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최신상품</b>
 				<hr color="green" width="90%">
 				<br>
-				<table width="100%" border="1" align="center">
+				<table width="540" border="1" align="center">
 					<tr>
 					<%
 						int cnt = 0;
