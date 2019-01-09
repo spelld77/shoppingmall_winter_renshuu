@@ -17,18 +17,19 @@ import shoppingMall.ProductDTO;
 public class ProdListDAO {
 	private static ProdListDAO insProdDAO = new ProdListDAO();
 	private Vector<ProductDTO> pdtos;
+	private Vector<ProductDTO> pdtos2;
 	Hashtable<String, Vector<ProductDTO>> hashTable = new Hashtable<String, Vector<ProductDTO>>();
 	
 	private ProdListDAO(){	
 		pdtos = new Vector<ProductDTO>(3, 2);
+		pdtos2 = new Vector<ProductDTO>(3,2);
 	}
 	
 	public static ProdListDAO getInstance() {
 		return insProdDAO;
 	}
 	
-	//상품 사양별로 상품목록 가져오는 비즈니스 로직
-	
+	//상품 사양별로 상품목록 가져오는 비즈니스 로직	
 	public Vector<ProductDTO> selectByPspec(String pspec) throws SQLException{
 		Connection dbconn = null;
 		PreparedStatement ps = null;
@@ -44,9 +45,36 @@ public class ProdListDAO {
 			hashTable.put(pspec, pdtos);
 			return pdtos;
 		} finally {
-			
+			if(rs != null) rs.close();
+			if(ps != null) ps.close();
+			if(dbconn != null) dbconn.close();
 		}
-	}//selectByPspec
+	}//selectByPspec()
+	
+	//#######카테고리별로 상품 리스트 가져오기#######
+	public Vector<ProductDTO> selectByCat(String category_fk) throws SQLException{
+		Connection dbconn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECt * FROM product2 WHERE pcategory_fk = ?";
+		
+		try {
+			dbconn = getConnection();
+			pstmt = dbconn.prepareStatement(sql);
+			pstmt.setString(1, category_fk);
+			rs = pstmt.executeQuery();
+			
+			pdtos2 = this.makeVector(rs);
+			
+			hashTable.put(category_fk, pdtos2);
+			return pdtos2;
+			
+		} finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(dbconn != null) dbconn.close();
+		}
+	}//selectByCat()
 	
 	public Vector<ProductDTO> makeVector(ResultSet rs) throws SQLException{
 		Vector<ProductDTO> v = new Vector<ProductDTO>();
@@ -69,8 +97,28 @@ public class ProdListDAO {
 			v.add(pdto);
 		}//while
 		return v;
-	}
+	}//makeVector()
 	
+	//#######상품 번호로 상품 정보 가져오기#######
+	public Vector<ProductDTO> selectByPnum(String pnum) throws Exception{
+		Connection dbconn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM product2 WHERE pnum = ?";
+		
+		try {
+			dbconn = getConnection();
+			pstmt = dbconn.prepareStatement(sql);
+			pstmt.setString(1, pnum);
+			rs = pstmt.executeQuery();
+			Vector<ProductDTO> v = this.makeVector(rs);
+			return v;
+		} finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(dbconn != null) dbconn.close();
+		}
+	}//selectByPnum()
 	
 	private Connection getConnection() {
 		Context ctx = null;

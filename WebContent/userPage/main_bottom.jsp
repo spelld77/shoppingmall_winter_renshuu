@@ -3,7 +3,7 @@
 
 	<!-- copyrights -->
 	<tr>
-		<td colspan="2" align="center">Copyrights xxx</td>
+		<td colspan="2" align="center" style="text-align:center;">Copyrights xxx</td>
 	</tr>
 </table>
 </body>
