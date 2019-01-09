@@ -21,7 +21,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td width="350" align="center" valign="top">
+		<td width="540" align="center" valign="top">
 			<!-- 카테고리 목록 -->
 			<table width="100%" border="1">
 			<%
