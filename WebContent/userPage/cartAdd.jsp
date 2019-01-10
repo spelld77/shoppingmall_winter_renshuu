@@ -17,5 +17,5 @@
 	pqty = pqty.trim();
 	ProdListDAO pdao = ProdListDAO.getInstance();
 	mallCart.addProd(pdao, pnum, pqty, pspec);
-
+	response.sendRedirect("cartList.jsp");
 %>
