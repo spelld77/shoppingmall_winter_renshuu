@@ -27,7 +27,7 @@
 	%>
 	
 	<br><br>
-	<table width="540" border="0" class="outLine">
+	<table width="500" border="0" class="outLine">
 		<tr class="m1">
 			<td colspan="2">
 				<b>[<%=pdto.getPname() %>]</b> 상품 상세 정보
@@ -52,7 +52,7 @@
 							<!-- 장바구니 담기 버튼 -->
 							<td>
 								<a href="javascript:goCart('<%=pnum%>')">
-									<img src="../uploadFile/btn_cart(1).gif" border="0">
+									<img src="../uploadFile/btn_cart(1).png	" border="0">
 								</a>
 							</td>
 							<!-- 장바구니 담기 버튼 end -->

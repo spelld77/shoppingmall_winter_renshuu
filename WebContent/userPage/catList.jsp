@@ -38,7 +38,7 @@
 							
 					%>
 							<td align="center" style="text-align:center">
-								<a href="prodView.jsp?pnum=<%=pnum%>">
+								<a href="prodView.jsp?pnum=<%=pnum%>&pspec=<%=pdto.getPspec()%>">
 									<img src="../uploadFile/<%=pimage%>" width="120" height="120" border="0">
 								</a>
 								<br>

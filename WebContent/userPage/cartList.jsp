@@ -81,7 +81,7 @@
 				장바구니 총액 : <%=df.format(cartTotPrice) %>원<br>
 				총누적 포인트 : [<%=cartTotPoint %>]point
 			</td>
-			<td>
+			<td colspan="2">
 				<a href="order.jsp">[주문하기]</a>&nbsp;&nbsp;
 				<a href="javascript:history.go(-2);">[계속쇼핑]</a>
 				
