@@ -99,6 +99,7 @@ public class ProdListDAO {
 		return v;
 	}//makeVector()
 	
+	
 	//#######상품 번호로 상품 정보 가져오기#######
 	public Vector<ProductDTO> selectByPnum(String pnum) throws Exception{
 		Connection dbconn = null;
@@ -119,6 +120,17 @@ public class ProdListDAO {
 			if(dbconn != null) dbconn.close();
 		}
 	}//selectByPnum()
+	
+	public ProductDTO getProduct(String pnum, String pspec) {
+		Vector<ProductDTO> v = hashTable.get(pspec);
+		for(ProductDTO pd : v) {
+			if(pnum.equals(pd.getPnum())) {
+				return pd;
+			}
+		}
+		return null;
+		
+	}//getProduct()
 	
 	private Connection getConnection() {
 		Context ctx = null;
