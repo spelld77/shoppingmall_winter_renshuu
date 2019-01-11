@@ -43,7 +43,7 @@ public class AdminDAO {
 	}
 	
 	public int adminCheck(String id, String pwd) {
-		int n = 0;
+		int n = 0;//로그인 체크 결과
 		String dbPw; //real password
 		
 		Connection dbconn = null;
@@ -58,16 +58,18 @@ public class AdminDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dbPw = rs.getString("password");
+				dbPw = rs.getString("password"); //real admin password
 //				System.out.println("dbpw:" + dbPw);
 //				System.out.println("pwd:" + pwd);
-				if(dbPw.equals(pwd)) { //compare real password and user input
+				
+				//compare real password and user's input password
+				if(dbPw.equals(pwd)) { //when correct password
 					n = AdminDAO.ADMIN_LOGIN_SUCCESS; 
 				} else {
 					n = AdminDAO.ADMIN_LOGIN_PW_FAIL; // Wrong password
 				}
 			} else { 
-				n = AdminDAO.ADMIN_LOGIN_NOT; //No registered
+				n = AdminDAO.ADMIN_LOGIN_NOT; //No admin info
 			}
 		} catch (SQLException e) {
 

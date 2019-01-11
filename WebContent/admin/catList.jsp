@@ -18,25 +18,26 @@
 		<th>삭제</th>
 	</tr>
 <%
-	CategoryDAO cdao = CategoryDAO.getInstance();
-	ArrayList<CategoryDTO> cdtos = cdao.categoryAll();
+	CategoryDAO cdao = CategoryDAO.getInstance(); 
+	ArrayList<CategoryDTO> cdtos = cdao.categoryAll(); //categories
 	if(cdtos == null || cdtos.size()==0){
 		out.println("<tr><td colspan='4'>등록된 카테고리가 없습니다</td></tr>");
-	}
-	for(int i=0; i<cdtos.size(); i++){
-		CategoryDTO cdto = cdtos.get(i);
+	} else{//when exist categories	
+		for(int i=0; i<cdtos.size(); i++){
+			CategoryDTO cdto = cdtos.get(i);
 	
 
-%>	<!-- 데이터 베이스로부터 가져온 리스트 내용 -->
-	<tr class="m2">
-		<td><%=cdto.getCnum() %></td>
-		<td><%=cdto.getCode() %></td>
-		<td><%=cdto.getCname() %></td>
-		<td><a href="catDelete.jsp?cnum=<%=cdto.getCnum()%>">삭제</a></td>
-	</tr>
+%>		<!-- 데이터 베이스로부터 가져온 리스트 내용 -->
+		<tr class="m2">
+			<td><%=cdto.getCnum() %></td>
+			<td><%=cdto.getCode() %></td>
+			<td><%=cdto.getCname() %></td>
+			<td><a href="catDelete.jsp?cnum=<%=cdto.getCnum()%>">삭제</a></td>
+		</tr>
 	
 <%
-	}//for End 
+		}//for End 
+	}
 %>
 </table>
 

@@ -7,17 +7,17 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	
-	AdminDAO adao = AdminDAO.getInstance();
-	int chkNum = adao.adminCheck(id, pw);
+	AdminDAO adao = AdminDAO.getInstance();//adminDAO 생성
+	int chkNum = adao.adminCheck(id, pw); //check real admin
 	
-	if(chkNum == -1){
+	if(chkNum == -1){//no admin info
 %>
 <script type="text/javascript">
 	alert("관리자만 접속할 수 있습니다...");
 	history.go(-1);
 </script>
 <%
-	}else if(chkNum == 0){
+	}else if(chkNum == 0){//wrong password
 
 %>
 <script type="text/javascript">
@@ -25,7 +25,7 @@
 	history.go(-1);
 </script>
 <%
-	} else if(chkNum == 1){
+	} else if(chkNum == 1){//success login
 		AdminDTO adto = adao.getAdmin(id);
 		
 		String name = adto.getName();

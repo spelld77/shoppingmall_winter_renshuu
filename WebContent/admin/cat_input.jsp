@@ -4,12 +4,14 @@
 <script>
 	function inputCheck(){
 		if(!cat_inputFrm.code.value){
-			alert("카테고리를 입력하세요");
+			alert("코드를 입력하세요");
 			cat_inputFrm.code.focus();
+			return;
 		}
 		if(!cat_inputFrm.cname.value){
 			alert("카테고리 이름을 입력하세요")
 			cat_inputFrm.cname.focus();
+			return;
 		}
 		document.cat_inputFrm.submit(); 
 	}

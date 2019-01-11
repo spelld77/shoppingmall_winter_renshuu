@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String cnum = request.getParameter("cnum");
+	String pimage = request.getParameter("pimage");//삭제할 파일 이름
 	if(cnum == null || cnum.trim().equals("")){
 		response.sendRedirect("catList.jsp");
 		return;

@@ -53,11 +53,11 @@ public class CategoryDAO {
 		ResultSet rs = null;
 		try {
 			dbconn = getConnection();
-			String sql = "SELECT * FROM category ORDER BY cnum desc";
+			String sql = "SELECT * FROM category ORDER BY cnum desc";//카테고리를 최신순으로
 			pstmt = dbconn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			ArrayList<CategoryDTO> cdtos = new ArrayList<CategoryDTO>();
+			ArrayList<CategoryDTO> cdtos = new ArrayList<CategoryDTO>();//카테고리를 묶기 위해서
 			while(rs.next()) {
 				String cnum = rs.getString("cnum");
 				String code = rs.getString("code");

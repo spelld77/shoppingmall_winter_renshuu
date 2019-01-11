@@ -14,7 +14,7 @@ if(code == null || cname == null || code.trim().equals("") || cname.trim().equal
 
 //비즈니스 로직(DAO) 수행
 CategoryDAO cdao = CategoryDAO.getInstance();
-int n = cdao.insertCat(code.trim(), cname.trim());
+int n = cdao.insertCat(code.trim(), cname.trim());//try category insertion
 String msg = "", url="";
 if(n > 0){
 	msg = "카테고리 등록 되었습니다...";
