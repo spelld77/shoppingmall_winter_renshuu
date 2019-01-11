@@ -7,7 +7,6 @@
 <%@ page import="shoppingMall.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	MultipartRequest multi = null;
 	
 	String uploadPath = application.getRealPath("uploadFile");
 	int maxSize = 1024 * 1024 * 10; //10MB
@@ -17,8 +16,9 @@
 	ProductDAO pdao = ProductDAO.getInstance();
 	
 	try{
-		multi = new MultipartRequest(request, uploadPath, maxSize, encoding, new DefaultFileRenamePolicy());
 		
+		MultipartRequest multi = new MultipartRequest(request, uploadPath, maxSize, encoding, new DefaultFileRenamePolicy());
+				
 		int n = pdao.updateProd(multi);
 		if(n > 0){
 			msg = "상품 정보가 수정 완료 되었습니다";
