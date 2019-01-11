@@ -8,7 +8,7 @@
 		response.sendRedirect("prodList.jsp");
 		return;
 	}//if
-	
+	//이미지 파일 삭제하기
 	String pimage = request.getParameter("pimage");
 	String imgPath = application.getRealPath("uploadFile");
 	
@@ -16,7 +16,7 @@
 	
 	if(pimage != null){
 		dfile = new File(imgPath + "/" + pimage);
-		System.out.println("삭제파일: "+dfile);
+		//System.out.println("삭제파일: "+dfile);
 		if(dfile.exists()){
 			if(dfile.delete()) out.println("이미지 파일 삭제 완료");
 		}

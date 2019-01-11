@@ -136,10 +136,10 @@ public class ProductDAO {
 		String pname = multi.getParameter("pname");
 		String pcategory_fk = multi.getParameter("pcategory_fk");
 		String pcompany = multi.getParameter("pcompany");
-		String pimageNew = multi.getFilesystemName("pimageNew");
-		//pimageNew가 null인 경우는 이미지는 그대로 (수정안했음)
+		String pimageNew = multi.getFilesystemName("pimageNew"); //새로운 이미지 
+		//이미지 변경이 없을 때
 		if(pimageNew == null) {
-			pimageNew = multi.getFilesystemName("pimageOld");
+			pimageNew = multi.getParameter("pimageOld");
 		}
 		String pqty = multi.getParameter("pqty");
 		String price = multi.getParameter("price");

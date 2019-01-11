@@ -7,22 +7,28 @@
 <%@ page import="shoppingMall.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	MultipartRequest multi = null;
 	
 	String uploadPath = application.getRealPath("uploadFile");
 	int maxSize = 1024 * 1024 * 10; //10MB
 	String encoding = "UTF-8";
 	String msg = "", url = "";
-	
+	 
 	ProductDAO pdao = ProductDAO.getInstance();
 	
 	try{
-		multi = new MultipartRequest(request, uploadPath, maxSize, encoding, new DefaultFileRenamePolicy());
+		
+		MultipartRequest multi = new MultipartRequest(request, uploadPath, maxSize, encoding, new DefaultFileRenamePolicy());
+		//이미지 변경 되었을때 삭제
+		//String imageOld = multi.getFilesystemName("pimageNew");
+		//String imageNew = multi.getParameter("pimageOld");
+		//System.out.println("imageOld: " + imageOld);
+		//System.out.println("imageNew: " + imageNew);
 		
 		int n = pdao.updateProd(multi);
 		if(n > 0){
 			msg = "상품 정보가 수정 완료 되었습니다";
 			url = "prodList.jsp";
+			
 		} else{
 			msg = "상품 정보 수정 처리가 되지 않았습니다";
 			url = "prodList.jsp";
