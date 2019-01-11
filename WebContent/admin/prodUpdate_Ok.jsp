@@ -12,7 +12,7 @@
 	int maxSize = 1024 * 1024 * 10; //10MB
 	String encoding = "UTF-8";
 	String msg = "", url = "";
-	
+	 
 	ProductDAO pdao = ProductDAO.getInstance();
 	
 	try{
