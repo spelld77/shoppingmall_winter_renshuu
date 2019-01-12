@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.multipart.FileRenamePolicy"%>
 <%@page import="java.io.IOException"%>
@@ -18,11 +19,17 @@
 	try{
 		
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, maxSize, encoding, new DefaultFileRenamePolicy());
-		//이미지 변경 되었을때 삭제
-		//String imageOld = multi.getFilesystemName("pimageNew");
-		//String imageNew = multi.getParameter("pimageOld");
-		//System.out.println("imageOld: " + imageOld);
-		//System.out.println("imageNew: " + imageNew);
+		
+		//새로운 이미지로 변경하면, 원래 이미지 삭제
+		if(multi.getFilesystemName("pimageNew") != null){ //새로운 이미지로 바꿨다면
+			String imgFolder = application.getRealPath("uploadFile");//이미지가 저장된 폴더
+			String oldImg = multi.getParameter("pimageOld"); //변경전 이미지파일 이름
+			File dFile = new File(imgFolder + "/" + oldImg);
+			if(dFile.exists()){
+				dFile.delete();
+			}
+			
+		}
 		
 		int n = pdao.updateProd(multi);
 		if(n > 0){
