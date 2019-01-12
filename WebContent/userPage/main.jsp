@@ -99,5 +99,7 @@
 			<%	}//else문 %>
 		</td>
 	</tr>
-
+<style>
+td{text-align:center;}
+</style>
 <%@ include file="main_bottom.jsp"%>

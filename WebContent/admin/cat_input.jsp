@@ -25,15 +25,15 @@
 <form action="cat_regOk.jsp" method="post" name="cat_inputFrm">
 	<table width="500" border="1" style="margin:auto">
 		<tr>
-			<td>코드</td>
-			<td><input type="text" name="code" maxlength="10"></td>
+			<td style="text-align:center;">코드</td>
+			<td ><input type="text" name="code" maxlength="10"></td>
 		</tr>
 		<tr>
-			<td>카테고리 이름</td>
+			<td style="text-align:center;">카테고리 이름</td>
 			<td><input type="text" name="cname"></td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="2" style="text-align:center;">
 				<input type="button" value="등록" onclick="inputCheck()">
 				<input type="reset" value="취소">
 			</td>

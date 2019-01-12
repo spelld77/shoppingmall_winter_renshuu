@@ -69,6 +69,9 @@
 %>	
 </table>
 
+<style>
+	td{text-align:center;}
+</style>
 	
 
 <%@ include file="../ad_bottom.jsp" %>
