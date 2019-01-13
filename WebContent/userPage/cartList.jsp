@@ -19,10 +19,10 @@
 		<tr class="m1">
 			<th width="10%">번호</th>
 			<th width="20%">상품명</th>
-			<th width="10%">수량</th>
+			<th width="15%">수량</th>
 			<th width="20%">단가</th>
-			<th width="20%">합계</th>
-			<th width="20%">삭제</th>
+			<th width="25%">합계</th>
+			<th width="10%">삭제</th>
 		</tr>
 		<%
 			DecimalFormat df = new DecimalFormat("#, ###, ###");
@@ -50,7 +50,7 @@
 			</td>
 			<td align="center">
 				<form action="cartModify.jsp" name="frm" method="post">
-					<input type="text" size="2" name="pqty" value="<%=pd.getPqty()%>">개
+					<input type="text" size="1" name="pqty" value="<%=pd.getPqty()%>">개
 					<input type="hidden" name="pnum" value="<%=pd.getPnum()%>">
 					<input type="submit" value="수정">
 				</form>
@@ -88,5 +88,7 @@
 			</td>
 		</tr>
 	</table>
-
+<style>
+td{text-align:center;}
+</style>
 <%@ include file="main_bottom.jsp"%>
